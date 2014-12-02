@@ -12,6 +12,8 @@ public class Client {
 	static OutputStreamWriter toServer;
 	static BufferedReader in = new BufferedReader(new InputStreamReader(System.in));
 
+	static Client_Mainframe mainframe;
+	
 	public static void main(String[] args)
 	{
 		try
@@ -20,6 +22,13 @@ public class Client {
             toServer = new OutputStreamWriter(talkSocket.getOutputStream(), "Cp1252");
             Receive rE = new Receive(talkSocket);
             rE.start();
+            
+            try {
+            	mainframe = new Client_Mainframe();
+				mainframe.setVisible(true);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
         }
         catch (Exception e)
         {
@@ -31,7 +40,8 @@ public class Client {
 	
 	public static void display(String s)
 	{
-		System.out.println(s);
+		mainframe.outline(s);
+		//System.out.println(s);
 	}
 	
 	public static void display(String[] sa)
