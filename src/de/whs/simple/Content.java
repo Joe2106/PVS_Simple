@@ -8,4 +8,4 @@ public enum Content {
 	send,
 	userlist,
 	error
-}
+} 
